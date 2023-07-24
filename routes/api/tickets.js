@@ -2,8 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'ticket message' });
-});
+const ctrl = require('../../controlers/tickets');
+
+router.get('/', ctrl.getAll);
+
+router.get('/:contactId', ctrl.getById);
 
 module.exports = router;
