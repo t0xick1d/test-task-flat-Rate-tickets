@@ -1,13 +1,20 @@
+const { Ticket } = require('../models/tickets');
+
 const { HttpError } = require('../helpers');
 const { ctrlWrapper } = require('../helpers');
 
 const getAll = async (req, res, next) => {
-  console.log('Get all');
-  res.json({ message: 'Get all' });
+  const result = await Ticket.find();
+  res.status(200).json(result);
 };
 
 const getById = async (req, res, next) => {
-  res.json({ message: 'Get by ID' });
+  const { ticketID } = req.params;
+  const result = await Ticket.findById(ticketID);
+  if (!result) {
+    throw HttpError(404, 'Not found');
+  }
+  res.status(200).json(result);
 };
 
 module.exports = {

@@ -6,6 +6,6 @@ const ctrl = require('../../controlers/tickets');
 
 router.get('/', ctrl.getAll);
 
-router.get('/:contactId', ctrl.getById);
+router.get('/:ticketID', ctrl.getById);
 
 module.exports = router;
