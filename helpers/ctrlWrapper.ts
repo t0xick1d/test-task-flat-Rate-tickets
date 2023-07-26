@@ -1,4 +1,4 @@
-const ctrlWrapper = (getAll) => {
+const ctrlWrapper = (getAll: any): Function => {
   const func = async (req, res, next) => {
     try {
       await getAll(req, res, next);
